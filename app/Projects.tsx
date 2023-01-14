@@ -61,6 +61,7 @@ async function Projects() {
         {projects.map((project: Project) => {
           return (
             <Project
+              slug={project.slug.current}
               key={project.slug.current}
               title={project.title}
               description={project.description}

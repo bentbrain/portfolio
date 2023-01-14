@@ -11,6 +11,8 @@ export default function Home() {
       </ContentWrap>
 
       <ContentWrap>
+        {/* 
+// @ts-ignore */}
         <Projects />
       </ContentWrap>
     </main>
