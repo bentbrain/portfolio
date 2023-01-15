@@ -1,6 +1,10 @@
 import React from "react";
 import Project from "./Project";
 
+type Props = {
+  featured?: boolean;
+};
+
 type Project = {
   cover: Cover;
   description: string;
@@ -49,12 +53,18 @@ const fetchProjects = async () => {
   return data.result;
 };
 
-async function Projects() {
+async function Projects({ featured }: Props) {
   const projects = await fetchProjects();
 
   return (
     <div>
-      <h2 className=" text-3xl sm:text-5xl font-bold">Projects</h2>
+      <h2
+        className={` text-3xl sm:text-5xl font-bold ${
+          !featured && "text-stone-600"
+        }`}
+      >
+        Projects
+      </h2>
       <div className="grid py-4 md:py-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {projects.map((project: Project) => {
           return (
@@ -64,6 +74,7 @@ async function Projects() {
               title={project.title}
               description={project.description}
               cover={project.cover.asset.url}
+              featured={featured}
             />
           );
         })}

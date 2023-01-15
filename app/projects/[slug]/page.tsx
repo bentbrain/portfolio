@@ -112,7 +112,7 @@ async function ProjectPage({ params: { slug } }: PageProps) {
       </div>
 
       <>
-        <h1 className="text-4xl mb-2 sm:text-5xl font-bold">
+        <h1 className="text-4xl mb-2 sm:text-5xl font-bold text-stone-600">
           {project.link ? (
             <a target="_blank" href={project.link}>
               {project.title}
