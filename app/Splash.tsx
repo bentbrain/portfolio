@@ -6,7 +6,7 @@ import Mobile from "../public/rockbusters-mobile.png";
 
 function Splash() {
   return (
-    <div className="text-center min-h-[min(calc(100vh-100px),800px)]  flex flex-col items-center justify-center ">
+    <div className="text-center py-8 md:py-0  md:min-h-[min(calc(100vh-100px),800px)]  flex flex-col items-center justify-center ">
       <h1 className="font-black text-4xl md:text-6xl mb-4">
         Digital Design & Web Development
       </h1>

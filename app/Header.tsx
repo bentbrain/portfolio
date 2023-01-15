@@ -1,12 +1,16 @@
 import React from "react";
 import Link from "next/link";
+import Nav from "./Nav";
 
 function Header() {
   return (
-    <header className=" py-4  px-clamp text-center  mb-4">
-      <Link href="/">
-        <p className="font-bold text-xl">Liam Cullen</p>
-      </Link>
+    <header className=" py-4  mb-4">
+      <div className="inner max-w-[2000px] mx-auto px-clamp flex justify-between ">
+        <Link href="/">
+          <p className="font-bold text-xl">Liam Cullen</p>
+        </Link>
+        <Nav />
+      </div>
     </header>
   );
 }

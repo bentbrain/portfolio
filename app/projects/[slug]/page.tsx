@@ -5,6 +5,8 @@ import { HiOutlineExternalLink } from "react-icons/hi";
 import urlBuilder from "@sanity/image-url";
 import client from "@/app/sanity-config";
 import Image from "next/image";
+import WindowWrap from "@/app/WindowWrap";
+import Link from "next/link";
 
 type PageProps = {
   params: {
@@ -65,15 +67,18 @@ const components = {
     image: (props: any) => {
       const imageData = props.value;
       return (
-        <div className="text-center my-8  mx-auto ">
+        <div className="text-center !my-8  mx-auto ">
           <div
-            className="relative rounded overflow-hidden mx-auto max-w-[min(65ch,100%)] max-h-[40rem] shadow"
+            className="relative rounded overflow-hidden mb-2 mx-auto max-w-[min(75ch,100%)] max-h-[40rem] shadow"
             style={{
               aspectRatio: `${imageData.asset._ref
                 .match(/\d*x/i)[0]
                 .replace("x", "")} / ${imageData.asset._ref
                 .match(/x\d*/i)[0]
                 .replace("x", "")} `,
+              maxWidth: `min(${imageData.asset._ref
+                .match(/\d*x/i)![0]
+                .replace("x", "")}px,100%)`,
             }}
           >
             <Image alt={imageData.alt} fill src={urlFor(imageData).url()} />
@@ -98,21 +103,62 @@ const FetchProject = async (slug: string): Promise<Project> => {
 async function ProjectPage({ params: { slug } }: PageProps) {
   const project = await FetchProject(slug);
 
+  const coverString = project.cover.asset._ref;
   return (
-    <ContentWrap width={`65ch`}>
-      <h1 className="text-5xl font-bold">
-        {project.link ? (
-          <a target="_blank" href={project.link}>
-            {project.title}
-            <HiOutlineExternalLink size={20} className="inline align-super" />
-          </a>
-        ) : (
-          project.title
-        )}
-      </h1>
-      <div className="content py-4 [&>*]:mb-2 [&>*]:max-w-[min(65ch,100%)] ">
-        <PortableText components={components} value={project.content} />
+    <ContentWrap width={`75ch`}>
+      <div className="breadcrumbs [&>*]:transition-colors [&>*:hover]:text-lime-500 mb-4 text-sm text-center text-stone-400">
+        <Link href={`/`}>Home</Link> / <Link href={`/projects`}>Projects</Link>{" "}
+        / {project.title}
       </div>
+
+      <>
+        <h1 className="text-4xl mb-2 sm:text-5xl font-bold">
+          {project.link ? (
+            <a target="_blank" href={project.link}>
+              {project.title}
+              <HiOutlineExternalLink
+                size={20}
+                className="max-w-[0.5em] inline align-super"
+              />
+            </a>
+          ) : (
+            project.title
+          )}
+        </h1>
+
+        <p className="mb-2">{project.description}</p>
+        <div className="tech flex gap-1  mb-4 ">
+          {project.technology.map((tech) => {
+            return (
+              <span className="bg-lime-200 text-sm md:text-base px-2 font-bold uppercase rounded-full text-lime-600">
+                {tech}
+              </span>
+            );
+          })}
+        </div>
+
+        <WindowWrap styles=" my-6">
+          <div
+            className="w-full relative"
+            style={{
+              aspectRatio: `${coverString
+                .match(/\d*x/i)![0]
+                .replace("x", "")} / ${coverString
+                .match(/x\d*/i)![0]
+                .replace("x", "")} `,
+            }}
+          >
+            <Image
+              fill
+              alt={`${project.title}`}
+              src={urlFor(project.cover).url()}
+            />
+          </div>
+        </WindowWrap>
+        <div className="content py-4 [&>*]:mb-2 [&>*]:max-w-[min(75ch,100%)] ">
+          <PortableText components={components} value={project.content} />
+        </div>
+      </>
     </ContentWrap>
   );
 }

@@ -54,8 +54,8 @@ async function Projects() {
 
   return (
     <div>
-      <h2 className="text-5xl font-bold">Projects:</h2>
-      <div className="grid py-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <h2 className=" text-3xl sm:text-5xl font-bold">Projects</h2>
+      <div className="grid py-4 md:py-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
         {projects.map((project: Project) => {
           return (
             <Project

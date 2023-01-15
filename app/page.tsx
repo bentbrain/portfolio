@@ -2,6 +2,7 @@ import Image from "next/image";
 import ContentWrap from "./ContentWrap";
 import Splash from "./Splash";
 import Projects from "./Projects";
+import ContactForm from "./ContactForm";
 
 export default function Home() {
   return (
@@ -14,6 +15,10 @@ export default function Home() {
         {/* 
 // @ts-ignore */}
         <Projects />
+      </ContentWrap>
+
+      <ContentWrap>
+        <ContactForm />
       </ContentWrap>
     </main>
   );
