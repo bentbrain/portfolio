@@ -43,7 +43,7 @@ function ContactForm() {
           Name:
           <input
             required
-            className="rounded p-2 text-stone-800"
+            className="rounded p-2 text-stone-800 max-w-[45ch]"
             name="name"
             id="name"
             type="text"
@@ -51,13 +51,13 @@ function ContactForm() {
           />
         </label>
         <label
-          className="flex flex-col gap-1 font-medium text-stone-400"
+          className="flex flex-col gap-1 font-medium text-stone-400 "
           htmlFor="email"
         >
           Email:
           <input
             required
-            className="rounded p-2 text-stone-800"
+            className="rounded p-2 text-stone-800 max-w-[45ch]"
             name="email"
             id="email"
             type="email"

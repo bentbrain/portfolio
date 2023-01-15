@@ -106,7 +106,7 @@ async function ProjectPage({ params: { slug } }: PageProps) {
   const coverString = project.cover.asset._ref;
   return (
     <ContentWrap width={`75ch`}>
-      <div className="breadcrumbs [&>*]:transition-colors [&>*:hover]:text-lime-500 mb-4 text-sm text-center text-stone-400">
+      <div className="breadcrumbs [&>*]:transition-colors [&>*:hover]:text-lime-500 mb-4 text-sm  text-stone-400">
         <Link href={`/`}>Home</Link> / <Link href={`/projects`}>Projects</Link>{" "}
         / {project.title}
       </div>
