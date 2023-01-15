@@ -64,7 +64,6 @@ const components = {
   types: {
     image: (props: any) => {
       const imageData = props.value;
-      console.log(imageData);
       return (
         <div className="text-center my-8  mx-auto ">
           <div
@@ -119,3 +118,14 @@ async function ProjectPage({ params: { slug } }: PageProps) {
 }
 
 export default ProjectPage;
+
+export async function generateStaticParams() {
+  const query = '[_type == "project"]{"slug": slug.current}';
+  const res = await fetch(
+    `https://lmfdk0bu.api.sanity.io/v2023-01-14/data/query/production?query=*${encodeURIComponent(
+      query
+    )}`
+  );
+  const data = await res.json();
+  return data.result;
+}
