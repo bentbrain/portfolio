@@ -127,7 +127,7 @@ async function ProjectPage({ params: { slug } }: PageProps) {
         </h1>
 
         <p className="mb-2">{project.description}</p>
-        <div className="tech flex gap-1  mb-4 ">
+        <div className="tech flex gap-1  mb-4 flex-wrap ">
           {project.technology.map((tech) => {
             return (
               <span className="bg-lime-200 text-sm md:text-base px-2 font-bold uppercase rounded-full text-lime-600">

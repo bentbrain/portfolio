@@ -1,28 +1,33 @@
 "use client";
 
-import React from "react";
+import { useState } from "react";
 
 const fetchURL = process.env.FETCH_URL;
 
-const HandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  const formData = {};
-  Array.from(e.currentTarget.elements).forEach((field) => {
-    if (!(field as HTMLInputElement).name) return;
-    (formData as any)[(field as HTMLInputElement).name] = (
-      field as HTMLInputElement
-    ).value;
-  });
-  const res = await fetch(`/api/mail`, {
-    method: "post",
-    body: JSON.stringify(formData),
-  });
-
-  console.log(res);
-};
-
 function ContactForm() {
-  return (
+  const [name, setName] = useState("");
+  const [formSubmitted, setFormSubmitted] = useState(false);
+
+  const HandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    const formData = {};
+    Array.from(e.currentTarget.elements).forEach((field) => {
+      if (!(field as HTMLInputElement).name) return;
+      (formData as any)[(field as HTMLInputElement).name] = (
+        field as HTMLInputElement
+      ).value;
+    });
+    const res = await fetch(`/api/mail`, {
+      method: "post",
+      body: JSON.stringify(formData),
+    });
+
+    if (res.status == 200) {
+      setFormSubmitted(true);
+    }
+  };
+
+  return !formSubmitted ? (
     <>
       <h2 className=" text-3xl sm:text-5xl font-bold text-stone-600">
         Contact
@@ -42,6 +47,7 @@ function ContactForm() {
             name="name"
             id="name"
             type="text"
+            onChange={(e) => setName(e.target.value)}
           />
         </label>
         <label
@@ -73,6 +79,16 @@ function ContactForm() {
           Submit
         </button>
       </form>
+    </>
+  ) : (
+    <>
+      <h2 className=" text-3xl sm:text-5xl font-bold text-stone-600">
+        Contact
+      </h2>
+      <p>
+        Thanks for reaching out {name}. I'll get back to you as soon as
+        possible.
+      </p>
     </>
   );
 }
