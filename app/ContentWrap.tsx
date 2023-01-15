@@ -1,8 +1,18 @@
 import React from "react";
 
-function ContentWrap({ children }: { children: React.ReactNode }) {
+type Props = {
+  children: React.ReactNode;
+  width?: string;
+};
+
+function ContentWrap({ children, width = "1200px" }: Props) {
   return (
-    <div className=" px-clamp w-[min(100%,1200px)] mx-auto mb-6">
+    <div
+      style={{
+        width: `min(${width}, 100%)`,
+      }}
+      className={` px-clamp mx-auto mb-6`}
+    >
       {children}
     </div>
   );
