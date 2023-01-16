@@ -24,7 +24,7 @@ async function JobView({ job }: Props) {
           <div className="flex flex-wrap gap-1">
             {job.skills.map((skill, i) => (
               <p
-                className="rounded-full bg-lime-100 text-lime-700 px-3 py-1"
+                className="bg-lime-200 text-sm md:text-base px-2 font-bold uppercase rounded-full text-lime-600"
                 key={`${skill}=${i}`}
               >
                 {skill}
