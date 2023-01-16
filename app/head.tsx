@@ -7,7 +7,7 @@ export default function Head() {
         name="description"
         content="Digital design and web development portfolio"
       />
-      <link rel="icon" href="/favicon.ico" />
+      <link rel="icon" href="/favicon-lime.ico" />
     </>
   );
 }
