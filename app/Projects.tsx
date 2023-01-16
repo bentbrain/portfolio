@@ -42,7 +42,7 @@ type Slug = {
 
 const fetchProjects = async () => {
   const query =
-    '[_type == "project"]{title, slug{current}, cover{asset->}, description}';
+    '[_type == "project" ] | order(order) {title, slug{current}, cover{asset->}, description}';
   const res = await fetch(
     `https://lmfdk0bu.api.sanity.io/v2023-01-14/data/query/production?query=*${encodeURIComponent(
       query
@@ -58,11 +58,7 @@ async function Projects({ featured }: Props) {
 
   return (
     <div>
-      <h2
-        className={` text-3xl sm:text-5xl font-bold ${
-          !featured && "text-stone-600"
-        }`}
-      >
+      <h2 className={` text-3xl sm:text-5xl font-bold text-stone-600`}>
         Projects
       </h2>
       <div className="grid py-4 md:py-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
