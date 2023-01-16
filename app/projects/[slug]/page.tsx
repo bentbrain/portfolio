@@ -69,7 +69,7 @@ const components = {
       return (
         <div className="text-center !my-8  mx-auto ">
           <div
-            className="relative rounded overflow-hidden mb-2 mx-auto max-w-[min(75ch,100%)] max-h-[40rem] shadow"
+            className="relative rounded-lg overflow-hidden mb-2 mx-auto max-w-[min(75ch,100%)] max-h-[40rem] shadow"
             style={{
               aspectRatio: `${imageData.asset._ref
                 .match(/\d*x/i)[0]
@@ -137,7 +137,7 @@ async function ProjectPage({ params: { slug } }: PageProps) {
           })}
         </div>
 
-        <WindowWrap styles=" my-6">
+        <WindowWrap styles="rounded-lg my-6">
           <div
             className="w-full relative"
             style={{

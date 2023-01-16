@@ -11,7 +11,7 @@ function ProjectsPage() {
       </div>
       {/* 
 // @ts-ignore */}
-      <Projects />
+      <Projects featured />
     </ContentWrap>
   );
 }

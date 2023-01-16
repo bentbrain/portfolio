@@ -43,7 +43,7 @@ function ContactForm() {
           Name:
           <input
             required
-            className="rounded p-2 text-stone-800 max-w-[45ch]"
+            className="rounded p-2 text-stone-800 max-w-[45ch]  border border-lime-400"
             name="name"
             id="name"
             type="text"
@@ -57,7 +57,7 @@ function ContactForm() {
           Email:
           <input
             required
-            className="rounded p-2 text-stone-800 max-w-[45ch]"
+            className="rounded p-2 text-stone-800 max-w-[45ch] border border-lime-400"
             name="email"
             id="email"
             type="email"
@@ -70,7 +70,7 @@ function ContactForm() {
           Message:
           <textarea
             required
-            className="rounded p-2 text-stone-800"
+            className="rounded p-2 text-stone-800  border border-lime-400 "
             name="message"
             id="message"
           />

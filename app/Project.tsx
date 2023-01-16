@@ -16,16 +16,16 @@ function Project({ title, cover, description, slug, featured }: Props) {
       <div
         className={`${
           featured
-            ? "bg-lime-200 shadow-lime-100 hover:bg-lime-100 "
+            ? "bg-lime-200 shadow-lime-300/80  hover:bg-lime-100 "
             : "bg-stone-50 shadow-stone-200 hover:bg-white "
-        } p-4 rounded-md transition-colors shadow-md overflow-hidden flex flex-col-reverse md:flex-col group `}
+        } p-4 rounded-md transition-colors ease-in-out	duration-300	 shadow-md overflow-hidden flex flex-col-reverse md:flex-col group `}
       >
-        <div className="aspect-video overflow-hidden relative  object-cover object-top rounded-md border border-stone-100 md:mb-4">
+        <div className="aspect-video overflow-hidden relative  object-cover object-top rounded-md  md:mb-4">
           <Image
             src={cover}
             alt={`${title} Desktop Screenshot`}
             fill
-            className="object-cover group-hover:scale-105 transition-transform object-top"
+            className="object-cover ease-in-out	duration-300	 md:group-hover:scale-[1.02] transition-transform object-top"
           />
         </div>
         <div className="mb-4 md:mb-0">
@@ -38,7 +38,7 @@ function Project({ title, cover, description, slug, featured }: Props) {
           </h3>
           <p
             className={`leading-5 ${
-              featured ? "text-lime-600" : "text-stone-500"
+              featured ? "text-lime-700" : "text-stone-500"
             }`}
           >
             {description}
