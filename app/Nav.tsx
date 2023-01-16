@@ -9,6 +9,9 @@ function Nav() {
           <Link href={"/projects"}>Projects</Link>
         </li>
         <li className="hover:text-lime-500 transition-colors ">
+          <Link href={"/resume"}>Resume</Link>
+        </li>
+        <li className="hover:text-lime-500 transition-colors ">
           <Link href={"/contact"}>Contact</Link>
         </li>
       </ol>
