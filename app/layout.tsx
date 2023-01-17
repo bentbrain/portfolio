@@ -18,7 +18,7 @@ export default function RootLayout({
       <head />
 
       <body
-        className={`${figtree.className}  bg-gradient-to-b pb-10	 min-h-screen from-stone-100 to-lime-50 text-stone-800`}
+        className={`${figtree.className}  bg-gradient-to-b pb-10	 min-h-[100dvh] from-stone-100 to-lime-50 text-stone-800`}
       >
         <Header />
         {children}
