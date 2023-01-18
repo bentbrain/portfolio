@@ -23,8 +23,8 @@ export default function handler(
   `;
 
   const data = {
-    to: "liamtc@icloud.com",
-    from: "contact@liamcullen.design",
+    to: "liamtc.beechmont+contact@gmail.com",
+    from: "liam@liamcullen.design",
     subject: "New Contact from Website",
     text: message,
     html: message.replace(/\r\n/g, "<br>"),
