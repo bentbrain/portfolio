@@ -2,6 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 const sgMail = require("@sendgrid/mail");
 const key = process.env.SENDGRID_KEY;
+
 sgMail.setApiKey(key);
 
 type Data = {
@@ -13,8 +14,6 @@ export default function handler(
   res: NextApiResponse<Data>
 ) {
   const body = JSON.parse(req.body);
-  console.log(body);
-  console.log(key);
 
   const message = `
   Name: ${body.name}\r\n
@@ -25,7 +24,7 @@ export default function handler(
   const data = {
     to: "liamtc.beechmont+contact@gmail.com",
     from: "liam@liamcullen.design",
-    subject: "New Contact from Website",
+    subject: `New Contact from Website from ${body.name}`,
     text: message,
     html: message.replace(/\r\n/g, "<br>"),
   };
@@ -39,6 +38,9 @@ export default function handler(
       }
     }
   );
+
+  console.log(body);
+  console.log(key);
 
   res.status(200).json({ status: "Ok" });
 }
