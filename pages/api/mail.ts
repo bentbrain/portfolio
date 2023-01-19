@@ -29,15 +29,19 @@ export default function handler(
     html: message.replace(/\r\n/g, "<br>"),
   };
 
-  sgMail.send(data).then(
-    () => {},
-    (error: any) => {
-      console.error(error);
-      if (error.response) {
-        console.error(error.response.body);
+  const sendMail = async () => {
+    await sgMail.send(data).then(
+      () => {},
+      (error: any) => {
+        console.error(error);
+        if (error.response) {
+          console.error(error.response.body);
+        }
       }
-    }
-  );
+    );
+  };
+
+  sendMail();
 
   console.log(body);
   console.log(key);
