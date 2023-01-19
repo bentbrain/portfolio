@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { StringLiteral } from "typescript";
 const sgMail = require("@sendgrid/mail");
 const key = process.env.SENDGRID_KEY;
 
@@ -8,10 +7,9 @@ sgMail.setApiKey(key);
 
 type Data = {
   status: string;
-  error?: String;
 };
 
-export default async function handler(
+export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -31,23 +29,22 @@ export default async function handler(
     html: message.replace(/\r\n/g, "<br>"),
   };
 
-  try {
+  const sendMail = async () => {
     await sgMail.send(data).then(
       () => {},
       (error: any) => {
-        return error;
         console.error(error);
         if (error.response) {
           console.error(error.response.body);
         }
       }
     );
-  } catch (error: any) {
-    // console.log(error);
-    return res
-      .status(error.statusCode || 500)
-      .json({ status: "error", error: error.message });
-  }
+  };
+
+  sendMail();
+
+  console.log(body);
+  console.log(key);
 
   res.status(200).json({ status: "Ok" });
 }

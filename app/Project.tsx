@@ -26,6 +26,9 @@ function Project({ title, cover, description, slug, featured }: Props) {
             alt={`${title} Desktop Screenshot`}
             fill
             className="object-cover ease-in-out	duration-300	 md:group-hover:scale-[1.02] transition-transform object-top"
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 50vw,
+            33vw"
           />
         </div>
         <div className="mb-4 md:mb-0">

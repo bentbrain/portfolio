@@ -81,7 +81,13 @@ const components = {
                 .replace("x", "")}px,100%)`,
             }}
           >
-            <Image alt={imageData.alt} fill src={urlFor(imageData).url()} />
+            <Image
+              sizes="(max-width: 768px) 100vw,
+              70vw"
+              alt={imageData.alt}
+              fill
+              src={urlFor(imageData).url()}
+            />
           </div>
           <p className="text-sm text-stone-400">{imageData.alt}</p>
         </div>
@@ -150,8 +156,11 @@ async function ProjectPage({ params: { slug } }: PageProps) {
           >
             <Image
               fill
+              priority
               alt={`${project.title}`}
               src={urlFor(project.cover).url()}
+              sizes="(max-width: 768px) 100vw,
+              90vw"
             />
           </div>
         </WindowWrap>
