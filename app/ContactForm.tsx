@@ -1,14 +1,18 @@
 "use client";
 
 import { useState } from "react";
+import Reaptcha from "reaptcha";
 
 const fetchURL = process.env.FETCH_URL;
 
 function ContactForm() {
   const [name, setName] = useState("");
+  const [pending, setPending] = useState(false);
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [verified, setVerified] = useState(false);
 
   const HandleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    setPending(true);
     e.preventDefault();
     const formData = {};
     Array.from(e.currentTarget.elements).forEach((field) => {
@@ -23,11 +27,16 @@ function ContactForm() {
     });
 
     if (res.status == 200) {
+      setPending(false);
       setFormSubmitted(true);
     }
   };
 
-  return !formSubmitted ? (
+  const handleVerify = (r: any) => {
+    setVerified(true);
+  };
+
+  return !formSubmitted && !pending ? (
     <>
       <h2 className=" text-3xl sm:text-5xl font-bold text-stone-600">
         Contact
@@ -79,6 +88,13 @@ function ContactForm() {
           Submit
         </button>
       </form>
+    </>
+  ) : pending ? (
+    <>
+      <h2 className=" text-3xl sm:text-5xl font-bold text-stone-600">
+        Contact
+      </h2>
+      <p>Submitting form...</p>
     </>
   ) : (
     <>
