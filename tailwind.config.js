@@ -8,7 +8,7 @@ module.exports = {
   theme: {
     extend: {
       spacing: {
-        clamp: "clamp(1rem, 3vw, 2rem)",
+        clamp: "clamp(1rem, 3vw, 1.7rem)",
       },
     },
   },

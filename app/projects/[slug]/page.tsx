@@ -136,7 +136,10 @@ async function ProjectPage({ params: { slug } }: PageProps) {
         <div className="tech flex gap-1  mb-4 flex-wrap ">
           {project.technology.map((tech) => {
             return (
-              <span className="bg-lime-200 text-sm md:text-base px-2 font-bold uppercase rounded-full text-lime-600">
+              <span
+                key={tech}
+                className="bg-lime-200 text-sm md:text-base px-2 font-bold uppercase rounded-full text-lime-600"
+              >
                 {tech}
               </span>
             );
@@ -179,7 +182,8 @@ export async function generateStaticParams() {
   const res = await fetch(
     `https://lmfdk0bu.api.sanity.io/v2023-01-14/data/query/production?query=*${encodeURIComponent(
       query
-    )}`
+    )}`,
+    { next: { revalidate: 600 } }
   );
   const data = await res.json();
   return data.result;

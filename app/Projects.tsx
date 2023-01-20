@@ -46,7 +46,8 @@ const fetchProjects = async () => {
   const res = await fetch(
     `https://lmfdk0bu.api.sanity.io/v2023-01-14/data/query/production?query=*${encodeURIComponent(
       query
-    )}`
+    )}`,
+    { next: { revalidate: 600 } }
   );
   const data = await res.json();
 
