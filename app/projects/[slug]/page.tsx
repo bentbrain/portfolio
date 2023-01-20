@@ -1,6 +1,6 @@
 import React from "react";
 import ContentWrap from "@/app/ContentWrap";
-import { PortableText } from "@portabletext/react";
+import { PortableText, PortableTextComponents } from "@portabletext/react";
 import { HiOutlineExternalLink } from "react-icons/hi";
 import urlBuilder from "@sanity/image-url";
 import client from "@/app/sanity-config";
@@ -62,7 +62,20 @@ type Slug = {
 
 const urlFor = (source: any) => urlBuilder(client).image(source);
 
-const components = {
+const components: PortableTextComponents = {
+  marks: {
+    // Ex. 2: rendering a custom `link` annotation
+    link: ({ value, children }) => {
+      const target = (value?.href || "").startsWith("http")
+        ? "_blank"
+        : undefined;
+      return (
+        <a href={value?.href} target={target}>
+          {children}
+        </a>
+      );
+    },
+  },
   types: {
     image: (props: any) => {
       const imageData = props.value;
@@ -167,7 +180,7 @@ async function ProjectPage({ params: { slug } }: PageProps) {
             />
           </div>
         </WindowWrap>
-        <div className="content py-4 [&>*]:mb-2 [&>*]:max-w-[min(75ch,100%)] ">
+        <div className="content [&_a]:underline [&_a]:text-lime-700  hover:[&_a]:text-lime-600 py-4 [&>*]:mb-2 [&>*]:max-w-[min(75ch,100%)] ">
           <PortableText components={components} value={project.content} />
         </div>
       </>
