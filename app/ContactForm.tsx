@@ -20,7 +20,7 @@ function ContactForm() {
         field as HTMLInputElement
       ).value;
     });
-    const res = await fetch(`/api/mail`, {
+    const res = await fetch(`/api/mailpretty`, {
       method: "post",
       body: JSON.stringify(formData),
     });
