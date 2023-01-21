@@ -1,3 +1,5 @@
+const fetchURL = process.env.FETCH_URL;
+
 export default function Head() {
   return (
     <>
@@ -8,6 +10,7 @@ export default function Head() {
         content="Digital design and web development portfolio"
       />
       <link rel="icon" href="/favicon-lime.ico" />
+      <meta property="og:image" content={`${fetchURL}api/og/`} />
     </>
   );
 }
