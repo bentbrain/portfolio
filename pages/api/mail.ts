@@ -1,6 +1,5 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from "next";
-import { StringLiteral } from "typescript";
 const sgMail = require("@sendgrid/mail");
 const key = process.env.SENDGRID_KEY;
 
