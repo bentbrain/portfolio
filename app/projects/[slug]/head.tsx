@@ -51,6 +51,7 @@ export default async function Head({ params }: { params: { slug: string } }) {
   return (
     <>
       <title>{`Liam Cullen | ${project.title}`}</title>
+      <meta content="width=device-width, initial-scale=1" name="viewport" />
       <link rel="icon" href="/favicon-lime.ico" />
       <meta name="description" content={project.description} />
       <meta
