@@ -169,6 +169,7 @@ export default async function handler(req: NextRequest) {
                 projects.map((project: Project, i: number) => {
                   return (
                     <img
+                      key={i}
                       src={project.cover.asset.url}
                       style={{
                         position: "absolute",
