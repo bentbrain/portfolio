@@ -9,9 +9,10 @@ sgMail.setApiKey(key);
 
 type Data = {
   status: string;
+  error?: String;
 };
 
-export default function handler(
+export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
@@ -38,22 +39,23 @@ export default function handler(
     html: html,
   };
 
-  const sendMail = async () => {
+  try {
     await sgMail.send(data).then(
       () => {},
       (error: any) => {
+        return error;
         console.error(error);
         if (error.response) {
           console.error(error.response.body);
         }
       }
     );
-  };
-
-  sendMail();
-
-  console.log(body);
-  console.log(key);
+  } catch (error: any) {
+    // console.log(error);
+    return res
+      .status(error.statusCode || 500)
+      .json({ status: "error", error: error.message });
+  }
 
   res.status(200).json({ status: "Ok" });
 }
