@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Reaptcha from "reaptcha";
 
 const fetchURL = process.env.FETCH_URL;
 

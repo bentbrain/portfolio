@@ -10,16 +10,17 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
+    <html
+      lang="en"
+      className=" bg-gradient-to-b pb-10	 from-stone-100 to-lime-50"
+    >
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
       <head />
 
-      <body
-        className={`${figtree.className}  bg-gradient-to-b pb-10	 min-h-[100dvh] from-stone-100 to-lime-50 text-stone-800`}
-      >
+      <body className={`${figtree.className}  min-h-[100dvh]  text-stone-800`}>
         <Header />
         {children}
       </body>
