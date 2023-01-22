@@ -12,7 +12,7 @@ type Props = {
 
 function Project({ title, cover, description, slug, featured }: Props) {
   return (
-    <Link href={`/projects/${slug}`}>
+    <Link className="sm:flex " href={`/projects/${slug}`}>
       <div
         className={`${
           featured
@@ -20,18 +20,18 @@ function Project({ title, cover, description, slug, featured }: Props) {
             : "bg-stone-50 shadow-stone-200 hover:bg-white "
         } p-4 rounded-md transition-colors ease-in-out	duration-300	 shadow-md overflow-hidden flex flex-col-reverse md:flex-col group `}
       >
-        <div className="aspect-video overflow-hidden relative  object-cover object-top rounded-md  md:mb-4">
+        <div className="aspect-video overflow-hidden relative sm:mt-auto	md:mt-0  object-cover object-top rounded-md  md:mb-4">
           <Image
             src={cover}
             alt={`${title} Desktop Screenshot`}
             fill
-            className="object-cover ease-in-out	duration-300	 md:group-hover:scale-[1.02] transition-transform object-top"
+            className="object-cover ease-in-out	duration-300  md:group-hover:scale-[1.02] transition-transform object-top"
             sizes="(max-width: 768px) 100vw,
             (max-width: 1200px) 50vw,
             33vw"
           />
         </div>
-        <div className="mb-4 md:mb-0">
+        <div className="mb-4 md:mb-0 ">
           <h3
             className={`font-bold  ${
               featured ? "text-lime-700" : "text-stone-700"
@@ -40,8 +40,8 @@ function Project({ title, cover, description, slug, featured }: Props) {
             {title}
           </h3>
           <p
-            className={`leading-5 ${
-              featured ? "text-lime-700" : "text-stone-500"
+            className={`leading-5  ${
+              featured ? "text-lime-700" : "text-stone-500 "
             }`}
           >
             {description}
