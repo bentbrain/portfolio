@@ -10,9 +10,10 @@ function Splash() {
       <h1 className="font-black text-4xl md:text-6xl mb-4">
         Design & Development
       </h1>
-      <p className="text-xl mb-6">
+      <p className="text-xl mb-2 ">
         Using my creative experience to build fun things on the web.
       </p>
+      <p className="text-xs mb-6">{`(I'm not a great copywriter.)`}</p>
       <div className="grid grid-cols-12 grid-rows-6 gap-4 items-center max-w-[min(700px,100%)] ">
         <div className="col-start-1 col-end-11 row-start-2 row-end-6  sm:col-end-11 sm:row-start-1 sm:row-end-6 my-4">
           <WindowWrap>
