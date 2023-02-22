@@ -26,6 +26,21 @@ async function Resume() {
         <Link href={`/`}>Home</Link> / Resume
       </div>
 
+      <h2 className=" text-3xl sm:text-5xl font-bold text-stone-600 mb-2">
+        Liam Cullen
+      </h2>
+      <p className="text-stone-400 font-medium mb-3">
+        0400 685 718 / liamtc@icloud.com
+      </p>
+
+      <p className="mb-6 max-w-[65ch]">
+        With a background in design and a love of technology, my goal is to
+        bring beautiful and impactful designs to life on the web. My experience
+        covers a broad range of creative practices including graphic design,
+        motion graphics and photography - but nothing excites me more than
+        combining all of these skills while designing for the web.
+      </p>
+
       <h2 className=" text-3xl sm:text-5xl font-bold text-stone-600 mb-3">
         Experience
       </h2>
