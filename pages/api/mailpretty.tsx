@@ -7,6 +7,8 @@ const key = process.env.SENDGRID_KEY;
 
 sgMail.setApiKey(key);
 
+console.log(key);
+
 type Data = {
   status: string;
   error?: String;
